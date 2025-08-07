@@ -6,7 +6,6 @@
 using namespace std;
 using namespace std::filesystem;
 
-// Function to list all files in the current directory
 void listAllFiles(const path& dir) {
     cout << "\n--- All Files ---\n";
     for (const auto& entry : directory_iterator(dir)) {
@@ -16,7 +15,6 @@ void listAllFiles(const path& dir) {
     }
 }
 
-// Function to list files by extension
 void listFilesByExtension(const path& dir) {
     string ext;
     cout << "Enter extension (e.g., .txt): ";
@@ -30,13 +28,11 @@ void listFilesByExtension(const path& dir) {
     }
 }
 
-// Function to list files by wildcard pattern
 void listFilesByPattern(const path& dir) {
     string pattern;
     cout << "Enter pattern (e.g., moha*.*): ";
     cin >> pattern;
 
-    // Convert wildcard pattern to regex
     string regexPattern = regex_replace(pattern, regex(R"(\.)"), R"(\.)");
     regexPattern = regex_replace(regexPattern, regex(R"(\*)"), ".*");
     regexPattern = regex_replace(regexPattern, regex(R"(\?)"), ".");
@@ -51,7 +47,6 @@ void listFilesByPattern(const path& dir) {
     }
 }
 
-// Submenu for listing files
 void listFilesMenu() {
     int option;
     path currentDir = current_path();
@@ -71,7 +66,6 @@ void listFilesMenu() {
     }
 }
 
-// Function to create a new directory
 void createDirectory() {
     string dirName;
     cout << "Enter new directory name: ";
@@ -89,7 +83,6 @@ void createDirectory() {
     }
 }
 
-// Function to change the current working directory
 void changeDirectory() {
     string newPath;
     cout << "Enter path to change directory: ";
@@ -103,7 +96,6 @@ void changeDirectory() {
     }
 }
 
-// Main menu
 void mainMenu() {
     int choice;
     do {
@@ -126,8 +118,8 @@ void mainMenu() {
     } while (choice != 4);
 }
 
-// Entry point
 int main() {
     mainMenu();
     return 0;
 }
+
